@@ -1,14 +1,12 @@
 {
 	"users": [
 		{
-			"username": "ricky",
-			"password": "cleancode",
-			"age": 21
+			"username": "user1",
+			"password": "password1"
 		},
 		{
-			"username": "navya",
-			"password": "navyapassword",
-			"age": 21
+			"username": "user2",
+			"password": "password2"
 		}
 	]
 }
