@@ -70,7 +70,7 @@ json readJsonFile(string filepath) {
 }
 
 User* getUsers(int* userCount) {
-	json jsonData = readJsonFile("test.json");
+	json jsonData = readJsonFile("data.json");
 	json usersJson = jsonData.at("users");
 	const int length = usersJson.size();
 	*userCount = length;
