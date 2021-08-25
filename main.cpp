@@ -49,6 +49,19 @@ User signUp() {
 	return User(username, password);
 }
 
+int signIn(User* users, int userCount) {
+	string username = getUserInput("username: ");
+	string password = getUserInput("password: ");
+
+	for (int i = 0; i < userCount; i++) {
+		User user = users[i];
+		if (user.getUsername() == username && user.getPassword() == password) return i;
+	}
+
+	cout << "Incorrect username or password. Try again." << endl;;
+	return signIn(users, userCount);
+}
+
 json readJsonFile(string filepath) {
 	std::ifstream in(filepath);
 	json j;
@@ -73,7 +86,20 @@ int main() {
 	int userCount;
 	User* users = getUsers(&userCount);
 
-	// User user = signUp();
-	// cout << user.getUsername() << ' ' << user.getPassword() << endl;
+	cout << "Choose option" << endl << "1: Sign in" << endl << "2: Sign up" << endl;
+	string option = getUserInput("Option: ");
+	if (option == "1") {
+		int userIndex = signIn(users, userCount);
+		User user = users[userIndex];
+		cout << "Signed in to account with" << endl << "username: " << user.getUsername() << endl << "password: " << user.getPassword() << endl;
+	}
+	else if (option == "2") {
+		User newUser = signUp();
+		cout << "New user created with" << endl << "username: " << newUser.getUsername() << endl << "password: " << newUser.getPassword() << endl;
+	}
+	else {
+		cout << "Invalid option. Try again.";
+	}
+
 	return 0;
 }
