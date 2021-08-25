@@ -19,18 +19,18 @@ string getUserInput(string question) {
 	return answer;
 }
 
-string getUsername() {
+string getNewUsername() {
 	string username = getUserInput("Username:");
 	if (User::isValidUsername(username)) return username;
 	cout << "Invalid username. Try again." << endl;
-	return getUsername();
+	return getNewUsername();
 }
 
-string getPassword() {
+string getNewPassword() {
 	string password = getUserInput("Password:");
 	if (!User::isValidPassword(password)) {
 		cout << "Invalid password. Try again." << endl;
-		return getPassword();
+		return getNewPassword();
 	}
 
 	string passwordAgain = getUserInput("Confirm password:");
@@ -39,13 +39,13 @@ string getPassword() {
 	}
 	else {
 		cout << "Passwords did not match. Please try again." << endl;
-		return getPassword();
+		return getNewPassword();
 	}
 }
 
 User signUp() {
-	string username = getUsername();
-	string password = getPassword();
+	string username = getNewUsername();
+	string password = getNewPassword();
 	return User(username, password);
 }
 
