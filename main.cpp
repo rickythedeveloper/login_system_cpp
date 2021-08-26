@@ -69,11 +69,11 @@ json readJsonFile(string filepath) {
 	return j;
 }
 
-User* getUsers(int* userCount) {
+User* getUsers(int& userCount) {
 	json jsonData = readJsonFile("data.json");
 	json usersJson = jsonData.at("users");
 	const int length = usersJson.size();
-	*userCount = length;
+	userCount = length;
 
 	User* users = (User*)malloc(length * sizeof(User));
 	for (int i = 0; i < length; i++) {
@@ -84,7 +84,7 @@ User* getUsers(int* userCount) {
 
 int main() {
 	int userCount;
-	User* users = getUsers(&userCount);
+	User* users = getUsers(userCount);
 
 	cout << "Choose option" << endl << "1: Sign in" << endl << "2: Sign up" << endl;
 	string option = getUserInput("Option: ");
